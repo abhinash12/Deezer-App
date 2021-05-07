@@ -1,0 +1,11 @@
+.card-wrap {
+  max-width: 8rem;
+}
+.album-title {
+  color: #01ffff;
+}
+
+.image-details {
+  min-width: 10rem;
+  max-width: 10rem;
+}
