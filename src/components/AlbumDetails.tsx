@@ -3,7 +3,15 @@ import "./style.css";
 import { useSelector } from "react-redux";
 import { IAlbumDetails } from "../features/deezer/deezerSlice";
 
-
+const formatTime =(sec :number)=>{
+  
+  var minutes = Math.floor(sec / 60);
+  var seconds = sec - minutes * 60;
+  let result ='';
+  result += "" + minutes + ":" + (seconds < 10 ? "0" : "");
+  result += "" + seconds;
+  return result
+}
 
 export const AlbumDetails = (props:any) => {
   const stateAlbumDetails: any = (state: RootState) =>
@@ -12,9 +20,6 @@ export const AlbumDetails = (props:any) => {
   const data = useSelector<any, IAlbumDetails>(
     stateAlbumDetails
   );
-
-  
-
   if (Object.keys(data).length === 0) {
     return <></>;
   }
@@ -113,7 +118,7 @@ export const AlbumDetails = (props:any) => {
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap border-opacity-10 border-b-2 border-black">
                               <span className="text-sm">
-                                {track.duration}
+                                {formatTime(track.duration)}
                               </span>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm border-opacity-10 border-b-2 border-black">
